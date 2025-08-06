@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カメラで動画撮影</title>
+</head>
+<body>
+  <h2>動画撮影テスト</h2>
+
+  <!-- 撮影ボタン -->
+  <input
+    type="file"
+    accept="video/*"
+    capture="environment"
+    id="videoInput"
+  />
+
+  <br><br>
+
+  <!-- プレビュー表示 -->
+  <video id="preview" controls width="300"></video>
+
+  <script>
+    const videoInput = document.getElementById('videoInput');
+    const preview = document.getElementById('preview');
+
+    videoInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const url = URL.createObjectURL(file);
+        preview.src = url;
+      }
+    });
+  </script>
+</body>
+</html>
